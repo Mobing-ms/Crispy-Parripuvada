@@ -8,26 +8,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        /* General body and font styles */
+       
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             margin: 0;
             padding: 20px;
-            background-color: #e79600; /* A very light gray background */
-            color: #333; /* Dark gray for text */
+            background-color: #e79600; 
+            color: #333; 
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Ensure it takes up the full viewport height */
+            min-height: 100vh; 
         }
 
-        /* Main container for the app */
         .crunchiness-container {
-            background-color: #fff2aa; /* White container background */
+            background-color: #fff2aa;
             padding: 40px;
-            border-radius: 15px; /* Rounded corners */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
             width: 90%;
             max-width: 500px;
             display: flex;
@@ -36,28 +35,27 @@
             align-items: center;
         }
 
-        /* Heading styles */
+      
         h1 {
-            color: #a0522d; /* A rich sienna color that evokes crunchiness */
+            color: #a0522d; 
             font-size: 2.5em;
             margin-bottom: 0;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Custom file input styling */
+      
         input[type="file"] {
-            display: none; /* Hide the default file input button */
+            display: none; 
         }
 
-        /* Create a label that looks like a button */
         .file-label {
-            background-color: #ff9800; /* A warm orange */
+            background-color: #ff9800; 
             color: #fff;
             padding: 12px 25px;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+            transition: background-color 0.3s, transform 0.2s; 
             font-size: 1em;
             font-weight: 600;
             display: inline-block;
@@ -66,13 +64,13 @@
         }
 
         .file-label:hover {
-            background-color: #f57c00; /* Darker orange on hover */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #f57c00; 
+            transform: translateY(-2px); 
         }
 
-        /* Predict button styling */
+      
         button {
-            background-color: #6a1b9a; /* A deep purple */
+            background-color: #6a1b9a; 
             color: #fff;
             border: none;
             padding: 12px 25px;
@@ -86,35 +84,35 @@
         }
         
         button:disabled {
-            background-color: #b081c7; /* A lighter purple for disabled state */
+            background-color: #b081c7; 
             cursor: not-allowed;
         }
 
         button:hover {
-            background-color: #4a148c; /* Darker purple on hover */
+            background-color: #4a148c; 
             transform: translateY(-2px);
         }
 
         button:active {
-            transform: translateY(0); /* Press down effect */
+            transform: translateY(0); 
             background-color: #6a1b9a;
         }
 
-        /* Result display styling */
+      
         #result {
             margin-top: 10px;
             padding: 15px;
             border-radius: 8px;
-            background-color: #e8eaf6; /* A soft blue-gray for results */
+            background-color: #e8eaf6; 
             font-size: 1.2em;
-            color: #3949ab; /* A strong indigo color */
+            color: #3949ab; 
             font-weight: 600;
             border: 1px solid #c5cae9;
             width: 100%;
             box-sizing: border-box;
         }
 
-        /* Animation for the result to pop in */
+       
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -163,7 +161,7 @@
                 return;
             }
 
-            // Show a loading state and disable the button
+    
             resultDiv.innerHTML = "Processing...";
             predictButton.disabled = true;
 
@@ -171,7 +169,7 @@
             formData.append('file', fileInput.files[0]);
 
             try {
-                // NOTE: This fetch call will not work in a browser environment without a running backend server.
+           
                 const response = await fetch('http://127.0.0.1:5000/predict', {
                     method: 'POST',
                     body: formData
@@ -187,10 +185,11 @@
                 console.error('Error:', error);
                 resultDiv.innerHTML = "Error predicting crunchiness.";
             } finally {
-                // Re-enable the button regardless of success or failure
+              
                 predictButton.disabled = false;
             }
         }
     </script>
 </body>
 </html>
+
