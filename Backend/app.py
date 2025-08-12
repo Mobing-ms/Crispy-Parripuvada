@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify, render_template
 import os
 import librosa
@@ -10,9 +11,14 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Allow frontend JS to access backend responses
 
-UPLOAD_FOLDER = "uploads"
-DATASET_FOLDER = "dataset"
-MODEL_FILE = "crunchiness_model.pkl"
+# Base directory of Backend/
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Folder paths
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "files")
+DATASET_FOLDER = os.path.join(BASE_DIR, "dataset")  # only used if retraining
+MODEL_FILE = os.path.join(BASE_DIR, "model", "crunchiness_model.pkl")
+
 LABELS = ["soft", "crispy", "crunchy", "very_crunchy"]
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -76,7 +82,11 @@ model = load_or_train_model()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return """
+    <h1>Crunchiness Detection API</h1>
+    <p>Upload audio via the <code>/predict</code> endpoint.</p>
+    <p>Status: <strong>Running ✅</strong></p>
+    """
 
 
 @app.route('/predict', methods=['POST'])
@@ -104,3 +114,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
