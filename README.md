@@ -33,16 +33,12 @@ For Software:
 For Software:
 # Installation
 For Linux
-```python -m venv myenv
-```
-```source myenv/bin/activate
-```
-```pip install -r requirements.txt
-```
+```python -m venv myenv```
+```source myenv/bin/activate```
+```pip install -r requirements.txt```
 
 # Run
-```python app.py
-```
+```python app.py```
 
 # Screenshots (Add at least 3)
 <img src="1.png" alt="APP"/>
